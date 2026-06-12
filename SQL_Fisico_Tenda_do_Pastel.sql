@@ -30,8 +30,10 @@ CREATE TABLE USUARIO (
 -- INSIRA DADOS NA TABELA USUARIO
 INSERT INTO usuario(nome,email,senha,funcao)
 VALUES ('Alice','alice@gmail.com','alice12345','admin');
+
 INSERT INTO usuario(nome,email,senha)
 VALUES('Bob','bob@gmail.com','bob12345');
+
 INSERT INTO usuario(nome,senha)
 VALUES('danilo','danilo12345');
 -- ALTERAR ATRIBUTO DO NOME DO USUÁRIO AQUI E COLOCAR COMO ÚNICO
@@ -53,7 +55,16 @@ CREATE TABLE PRODUTO (
 );
 
 -- INSIRA DADOS NA TABELA PRODUTOS
-
+INSERT INTO produto(nome,valor,categoria)
+VALUES ('Pastel de frango',10.50,'pastel');
+INSERT INTO produto(nome,valor,categoria)
+VALUES ('Pastel de carne',11.50,'pastel');
+INSERT INTO produto(nome,valor,categoria)
+VALUES ('Pastel de queijo',9.00,'pastel');
+INSERT INTO produto(nome,valor,categoria,volume_ml)
+VALUES ('Caldo de cana',10.50,'caldo_de_cana',100);
+INSERT INTO produto(nome,valor,categoria,volume_ml)
+VALUES ('Caldo de cana',18.00,'caldo_de_cana',300);
 -- ─────────────────────────────────────────────────────────────────────────────
 -- 3. CAIXAS
 -- ─────────────────────────────────────────────────────────────────────────────
@@ -67,6 +78,10 @@ CREATE TABLE CAIXA (
   FOREIGN KEY (id_usuario_fk) REFERENCES USUARIO(id_usuario)
 );
 
+ALTER TABLE usuario RENAME COLUMN nome TO nome_usuario;
+INSERT INTO usuario(nome_usuario,email,senha,funcao) VALUES
+('admin','admin@tenda.com','admin','admin'),
+('carlos_vendedor','calos@tenda.com','carlos123','user');
 -- ─────────────────────────────────────────────────────────────────────────────
 -- 4. PEDIDOS
 -- ─────────────────────────────────────────────────────────────────────────────
@@ -115,7 +130,8 @@ INSERT INTO CAIXA (id_usuario_fk, data_hora_abertura, data_hora_fechamento, valo
 
 -- Caixa 2 (Aberto)
 -- FAÇA O INSERT AQUI
-
+INSERT INTO caixa (id_usuario_fk,data_hora_abertura,valor_inicial) VALUES
+(4,'2026-06-11 21:40:00',100.00);
 -- PEDIDO
 -- FAÇA 5 INSERTS DE PEDIDOS
 
